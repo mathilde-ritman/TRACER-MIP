@@ -1,11 +1,11 @@
 # Mathilde Ritman 2025, config for performing INCUS-like cloud tracking on ICON
 
 version_name: 'frozen'
-select_data: ['cli','qg','qs']
-segment_data: ['cli','qg','qs']
-grid_spacing: 11100  # in meter (for Latitude)
-time_spacing: 900 # seconds (= 15 mins)
-dz: 300
+select_data: ['cli','qg','qs','qh']
+segment_data: ['cli','qg','qs','qh']
+grid_spacing: 800  # in meter (for Latitude)
+time_spacing: 1800 # seconds (= 30 mins)
+# dz: 300
 
 params_features: 
   position_threshold: 'weighted_diff' # how to choose position of feature comprised of multiple pixels
@@ -16,8 +16,8 @@ params_features:
   threshold: [0.00001, 0.0001, 0.001, 0.01] # kg/kg - choice used for tropics-wide experiment
   # threshold: [0.00001,]
   n_erosion_threshold: 0 # number of pixels by which to erode the identified features
-  vertical_coord: 'height'
-  dz: 300 # (meters) assumes constant vertical spacing
+  vertical_coord: 'air_pressure'
+  # dz: 300 # (meters) assumes constant vertical spacing
   # PBC_flag: # whether to use periodic boundaries, and if so in which directions
 
 params_segmentation:
@@ -25,7 +25,7 @@ params_segmentation:
   threshold: 0.00001 # kg/kg
   target: "maximum"
   seed_3D_flag: 'box'
-  vertical_coord: 'height'
+  vertical_coord: 'air_pressure'
   # PBC_flag: # whether to use periodic boundaries, and if so in which directions
 
 params_linking:
